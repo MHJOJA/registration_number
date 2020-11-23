@@ -1,0 +1,34 @@
+body {
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+    background-color: lavenderblush;
+    font-size: x-large;
+
+}
+.button-primary{
+    font-size: x-large;
+}
+.townSelecton{
+    font-size: x-large;
+}
+.success{
+    color: green;
+}
+li {
+    color: black;
+    display: block;
+    display: inline-flex;
+    list-style: none;
+    background-color:yellow;
+    border: 0.1em solid;
+    border-radius:1em;
+    padding: 1em;
+    margin: 0.5em;
+    width: 7em;
+    text-align: center;
+    font-weight: bold;
+    border-style: bold;
+
+
+  }

@@ -1,0 +1,48 @@
+<div class="container">
+  <form action="/" method="POST">
+    <div class="header">
+      <h1>Registrations Web App</h1>
+    </div>
+    <div class="flash">
+      {{messages.flash}}
+    </div>
+    <div class="success">
+      {{messages.success}}
+    </div>
+    <br>
+    <div class="textbox">
+      <input type="text" name="registration_no" placeholder="enter a reg number" value=""><br>
+    </div>
+    <br />
+
+    {{!-- <div class="button"> --}}
+      {{!-- <input type="button" value="Add registraton"> --}}
+      <button class="button-primary" type="submit" name="button">Add registration</button>
+    {{!-- </div> --}}
+
+  </form>
+  <form action="/reg_numbers" method="GET">
+    <h3>Please select a Town</h3>
+    <div class="TownSelection">
+
+      <select name="TownSelection" id="filter" class="cities">
+        <option value="All">Show All</option>
+        <option value="1">Bellville</option>
+        <option value="2">Cape Town</option>
+        <option value="3">Paarl</option>
+      </select>
+    </div>
+    <br>
+    <button type="submit" class="button-primary">Filter</button>
+
+  </form>
+  <a href="/reset" class="reset">reset</a>
+  <ul>
+    {{#each numberplates}}
+
+    <li>{{this.numberplates }}</li>
+
+    {{/each}}
+  </ul>
+
+</div>
