@@ -7,13 +7,7 @@ module.exports = function registration(pool) {
     console.log(regNumber)
     console.log('reg_number file', town)
 
-    // validations
-    // if (plates.rowCount === 0) {
-
-    //   var townId = await pool.query(
-    //     'select id from town where town_id  = $1',
-    //     [substring]
-    //   )
+    
     try {
       var text = 'INSERT INTO registration_numbers(numberplates,town_code) VALUES ($1,$2)'
       var values = [regNumber, town]
@@ -56,7 +50,7 @@ module.exports = function registration(pool) {
     insertRegNumbers,
     getRegNumbers,
     reset,
-    // regCheck
+    
     
 
   }

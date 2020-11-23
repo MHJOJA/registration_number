@@ -43,7 +43,7 @@ app.use(flash());
 
 app.get('/', async function (req, res) {
 console.log('get  route');
-    //await regNumbers.insertRegNumbers(plates)
+    
     const reg_numbers = await regNumbers.getRegNumbers();
 
     console.log({reg_numbers});
