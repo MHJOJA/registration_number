@@ -9,11 +9,12 @@ create table town(
 create table registration_numbers(
 	id serial not null primary key,
     numberplates text not null,
-    town_code text not null,
-   foreign key (town_code) references town(id)
+    town_code text not null
 
 
 );
+--    foreign key (town_code) references town(id)
+
 
 
 
