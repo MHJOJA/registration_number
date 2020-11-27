@@ -42,7 +42,7 @@ app.use(flash());
 
 
 app.get('/', async function (req, res) {
-console.log('get  route');
+// console.log('get  route');
     const reg_numbers = await regNumbers.getRegNumbers();
 
     console.log({reg_numbers});
@@ -57,7 +57,7 @@ console.log('get  route');
 app.post('/', async function (req, res) {
     var plates = req.body.registration_no;
 
-    console.log('post route');
+    // console.log('post route');
     if (plates === "") {
         req.flash('info', 'enter a registration number')
     }
@@ -65,7 +65,7 @@ app.post('/', async function (req, res) {
     
     const isAdded = await regNumbers.insertRegNumbers(plates)
 
-    console.log(isAdded);
+    // console.log(isAdded);
 
     if(isAdded) {
         req.flash('success', 'you have entered a correct ragistratiion numbert');
@@ -73,15 +73,31 @@ app.post('/', async function (req, res) {
     }
 
     const numberplates = await regNumbers.getRegNumbers() || [];
-    console.log({ numberplates });
-    console.log(' after insert and result');
+    // console.log({ numberplates });
+    // console.log(' after insert and result');
 
     res.render('home', {
         numberplates
     })
 
-    
+
 })
+
+app.post('/filtering', async function(req,res){
+
+var towns = req.body.townSelection;
+var filter = await regNumbers.filter(towns);
+console.log(filter);
+
+if(towns == 'All'){
+
+}
+
+res.render('home',{
+    numberplates: filter,
+});
+
+});
 
 
 app.get("/reset", async function (req, res) {

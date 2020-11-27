@@ -5,25 +5,40 @@ module.exports = function registration(pool) {
     var town = regNumber.substring(0, 2);
 
     console.log(regNumber)
-    console.log('reg_number file', town)
-
+    console.log( town)
     
-    try {
-      var text = 'INSERT INTO registration_numbers(numberplates,town_code) VALUES ($1,$2)'
-      var values = [regNumber, town]
+   
+      var townsId = await pool.query(
+        'select id from town where start_string = $1 ',[town]);
+        
+        var theId = townsId.rows[0].id;
+
+      
+      var text = 'INSERT INTO registration_numbers(numberplates,town_id) VALUES ($1,$2)'
+      var values = [regNumber, theId]
       await pool.query(text, values)
 
       return true;
-      
-
-    } catch (error) {
-      console.log('this is an error ',error)
-      return false
-    }
-
+     
     
 
   }
+
+  async function filter(id) {
+    if (id == "All") {
+      const all = await pool.query(
+        "select numberplates from registration_numbers"
+      );
+      return all.rows;
+    } else {
+      const theTown = await pool.query(
+        "select numberplates from registration_numbers where town_id = $1",
+        [parseInt(id)]
+      );
+      return theTown.rows;
+    }
+  }
+
  
   
  
@@ -50,6 +65,7 @@ module.exports = function registration(pool) {
     insertRegNumbers,
     getRegNumbers,
     reset,
+     filter
     
     
 

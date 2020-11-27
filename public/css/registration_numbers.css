@@ -16,9 +16,11 @@ body {
     color: green;
 }
 li {
+    text-align: center;
     color: black;
     display: block;
     display: inline-flex;
+    justify-content: center;
     list-style: none;
     background-color:yellow;
     border: 0.1em solid;
@@ -26,7 +28,6 @@ li {
     padding: 1em;
     margin: 0.5em;
     width: 7em;
-    text-align: center;
     font-weight: bold;
     border-style: bold;
 
