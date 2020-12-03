@@ -29,14 +29,6 @@ describe("The registration numbers webapp", function () {
 
   
     
-      // it('should be able to return numberplate if its from Cape Town', async function(){
-      //   await regNumbers.insertRegNumbers('CY 321 456');
-      //   await regNumbers.insertRegNumbers('CA 987 125');
-      //   await regNumbers.insertRegNumbers('CL 985 748');
-      //   assert.deepEqual(await regNumbers.filter(1), [
-      //     {numberplates : 'CA 987 123'}
-      //   ])
-      // })
 it('should be able to reset the database ', async function () {
         await regNumbers.insertRegNumbers("CA 321-541");
         await regNumbers.insertRegNumbers("Cy 785 214");
@@ -54,11 +46,22 @@ it('should be able to reset the database ', async function () {
 //     await regNumbers.insertRegNumbers('CL 789-325')
 
 //     const results = await regNumbers.insertRegNumbers()
-// 		await assert.deepEqual([{reg_numb: 'CA 132 654'},{reg_numb: 'CL 789325'}], results)
+// 		await assert.deepEqual([{numberplates: 'CA 132 654'},{numberplates: 'CL 789325'}], results)
 
 //   })
 
- })
+
+// it("should be able to show if its from Bellville", async function () {
+//   await regNumbers.insertRegNumbers("CA 369-985");
+//   await regNumbers.insertRegNumbers("CL 458 475");
+//   await regNumbers.insertRegNumbers("CY 639 158");
+
+//   assert.equal(await regNumbers.filter(1), [
+//     { numberplates: "CY 639 158" },
+//   ]);
+// });
+
+  })
 
 
 

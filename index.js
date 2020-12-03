@@ -56,25 +56,40 @@ app.get('/', async function (req, res) {
 
 app.post('/', async function (req, res) {
     var plates = req.body.registration_no;
-
+    console.log(plates);
+    var d = await regNumbers.duplicates(plates)
     // console.log('post route');
     if (plates === "") {
         req.flash('info', 'enter a registration number')
+        
+    }
+    else if(plates === 0) {
+        req.flash('success', 'you have entered a correct ragistratiion number');
+
+    }
+     else if (d ===1) {
+        req.flash('info', 'numberplate already exists')
+
+    } 
+    // else if(!(/C[AYJ] \d{3,5}$/.test(plates)) || (!(/[a-zA-Z]/.test(plates)))) {
+    //     req.flash('enter correct number')
+    // }
+   
+   
+    else {
+         await regNumbers.insertRegNumbers(plates)
+
     }
 
     
-    const isAdded = await regNumbers.insertRegNumbers(plates)
 
     // console.log(isAdded);
 
-    if(isAdded) {
-        req.flash('success', 'you have entered a correct ragistratiion numbert');
-
-    }
+    
 
     const numberplates = await regNumbers.getRegNumbers() || [];
-    // console.log({ numberplates });
-    // console.log(' after insert and result');
+    console.log({ numberplates });
+    console.log(' after insert and result');
 
     res.render('home', {
         numberplates

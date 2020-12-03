@@ -16,10 +16,6 @@ create table registration_numbers(
 
 );
 
-
-
-
-
 insert into town (registration, start_string) values('Bellvillle', 'CY');
 insert into town (registration, start_string) values('Paarl', 'CJ');
 insert into town (registration, start_string) values('Cape Town', 'CA');

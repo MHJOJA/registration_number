@@ -15,6 +15,9 @@ body {
 .success{
     color: green;
 }
+.flash{
+    color: red;
+}
 li {
     text-align: center;
     color: black;

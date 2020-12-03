@@ -2,12 +2,10 @@ module.exports = function registration(pool) {
 
   async function insertRegNumbers(regNumber) {
     var regNumber = regNumber.toUpperCase();
+   
     var town = regNumber.substring(0, 2);
-
     console.log(regNumber)
     console.log( town)
-    
-   
       var townsId = await pool.query(
         'select id from town where start_string = $1 ',[town]);
         
@@ -19,10 +17,20 @@ module.exports = function registration(pool) {
       await pool.query(text, values)
 
       return true;
-     
+   
+  }
+
+  const duplicates = async (number) => {
+    // var regNumber = regNumber.toUpperCase();
+
+    var regCount = await pool.query('select numberplates from registration_numbers where numberplates = $1',[number])
+       return  regCount.rowCount 
+  }
+
     
 
-  }
+    
+    
 
   async function filter(id) {
     if (id == "All") {
@@ -47,7 +55,7 @@ module.exports = function registration(pool) {
     const viewTown = await pool.query(
       "select numberplates from registration_numbers"
     );
-    console.log({viewTown});
+    // console.log({viewTown});
     return viewTown.rows;
   }
 
@@ -65,6 +73,7 @@ module.exports = function registration(pool) {
     insertRegNumbers,
     getRegNumbers,
     reset,
+    duplicates,
      filter
     
     
